@@ -1,0 +1,66 @@
+@import "../utility/utility.scss";
+
+.themeToggle {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    display: inline-block;
+
+    .toggleWrapper {
+        display: flex;
+        padding: rem(12px);
+        align-items: center;
+    }
+
+    p {
+        margin: 0;
+        display: inline;
+        font-size: $font-size-detail;
+        padding-left: rem(8px);
+        font-weight: 600;
+    }
+
+    @include for-size(b4) {
+        .toggleWrapper {
+            padding: rem(12px) rem(4px);
+        }
+
+        p {
+            padding-left: rem(4px);
+        }
+    }
+}
+
+.themeToggle.light-theme {
+    p {
+        color: black;
+    }
+    .moon-icon {
+        .inner {
+            fill: none;
+        }
+
+        .outer {
+            fill: black;
+        }
+    }
+}
+
+.themeToggle.dark-theme {
+    p {
+        color: white;
+    }
+
+    .moon-icon {
+        .inner {
+            fill: white;
+        }
+
+        .outer {
+            fill: none;
+        }
+    }
+}

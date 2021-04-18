@@ -1,0 +1,55 @@
+@import "../utility/utility.scss";
+$border-radius: rem(8px);
+
+.card {
+    display: inline-block;
+    border-radius: $border-radius;
+    height: 100%;
+
+    .card-img {
+        display: block;
+        border-radius: $border-radius $border-radius 0 0;
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+    }
+
+    &.dark-theme {
+        background-color: $color-dark-elem;
+        @include box-shadow(dark);
+
+        .card-data {
+            color: $color-dark-text;
+        }
+    }
+
+    &.light-theme {
+        background-color: $color-light-elem;
+        @include box-shadow(light);
+
+        .card-data {
+            color: $color-light-text;
+        }
+    }
+}
+
+.card .card-data {
+    text-align: left;
+    padding: 1.5rem;
+
+    .title {
+        margin: 0;
+        padding: 0 0 rem(8px) 0;
+        font-size: rem(18px);
+    }
+
+    .data-row {
+        margin: 0;
+        padding: 0.25rem 0;
+        font-size: $font-size-home;
+
+        .data-title {
+            font-weight: 600;
+        }
+    }
+}

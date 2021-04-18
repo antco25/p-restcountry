@@ -1,0 +1,104 @@
+@import "../utility/utility.scss";
+
+.dropdown {
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    font-size: $font-size-home;
+}
+
+.dropdown {
+    &.light-theme {
+        color: $color-light-text;
+        @include box-shadow(light);
+
+        .dropdown-selected {
+            background-color: $color-light-elem;
+
+            svg {
+                fill: $color-light-text;
+            }
+        }
+
+        .dropdown-options {
+            background-color: $color-light-elem;
+            box-shadow: 0 rem(4px) rem(8px) 0 rgba(255, 255, 255, 0.2);
+
+            .option:hover {
+                background-color: $color-light-input;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            .dropdown-options {
+                box-shadow: 0 rem(4px) rem(8px) 0 rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+
+    &.dark-theme {
+        color: $color-dark-text;
+        @include box-shadow(dark);
+
+        .dropdown-selected {
+            background-color: $color-dark-elem;
+
+            svg {
+                fill: $color-dark-input;
+            }
+        }
+
+        .dropdown-options {
+            background-color: $color-dark-elem;
+            box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+
+            .option:hover {
+                background-color: $color-light-text;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            .dropdown-options {
+                box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}
+
+.dropdown .dropdown-selected {
+    padding: rem(16px);
+    border-radius: rem(8px);
+
+    .selected {
+        display: inline-block;
+        padding-right: rem(10px);
+        min-width: rem(125px);
+    }
+}
+.dropdown .dropdown-options {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    top: 110%;
+    margin: 0;
+    padding: rem(16px) 0;
+    border-radius: rem(8px);
+    box-sizing: border-box;
+    width: 100%;
+
+    &.options-visible {
+        display: block;
+    }
+
+    .option {
+        padding: rem(10px) rem(16px);
+    }
+}

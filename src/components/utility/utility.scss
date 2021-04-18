@@ -1,0 +1,90 @@
+//Colors
+$color-dark-text: white;
+$color-dark-input: white;
+$color-dark-bg: hsl(207, 26%, 17%);
+$color-dark-elem: hsl(209, 23%, 22%);
+
+$color-light-text: hsl(200, 15%, 8%);
+$color-light-input: hsl(0, 0%, 52%);
+$color-light-bg: hsl(0, 0%, 98%);
+$color-light-elem: white;
+
+@function rem($size) {
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
+}
+
+//Default Font Size
+$font-size-home: rem(14px);
+$font-size-detail: rem(16px);
+
+//Breakpoints
+$breakpoint-0: 1440px;
+$breakpoint-1: 1100px;
+$breakpoint-2: 992px;
+$breakpoint-3: 768px;
+$breakpoint-4: 576px;
+$breakpoint-mobile: 375px;
+
+@mixin for-size($size) {
+    @if $size == mobile {
+        @media (max-width: $breakpoint-mobile) {
+            @content;
+        }
+    } @else if $size == b4 {
+        @media (max-width: $breakpoint-4) {
+            @content;
+        }
+    } @else if $size == b3 {
+        @media (max-width: $breakpoint-3) {
+            @content;
+        }
+    } @else if $size == b2 {
+        @media (max-width: $breakpoint-2) {
+            @content;
+        }
+    } @else if $size == b1 {
+        @media (max-width: $breakpoint-1) {
+            @content;
+        }
+    } @else if $size == b0 {
+        @media (max-width: $breakpoint-0) {
+            @content;
+        }
+    }
+}
+
+//Reusable
+$app-side-padding: rem(30px);
+$m-app-side-padding: rem(24px);
+
+.app-wrap {
+    max-width: rem(1300px);
+    margin: 0 auto;
+}
+
+@mixin box-shadow($theme) {
+    @if $theme == "light" {
+        box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.1);
+
+        &:hover,
+        &:focus {
+            box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+        }
+    } @else {
+        box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+
+        &:hover,
+        &:focus {
+            box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+@mixin box-shadow-2($theme) {
+    @if $theme == "light" {
+        box-shadow: 0 rem(4px) rem(8px) 0 rgba(255, 255, 255, 0.2);
+    } @else {
+        box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+    }
+}

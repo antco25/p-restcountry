@@ -1,0 +1,80 @@
+@import "./components/utility/utility.scss";
+
+.App {
+  min-height: 100%;
+  min-width: 375px;
+
+  &.dark-theme {
+    background-color: $color-dark-bg;
+  }
+
+  &.light-theme {
+    background-color: $color-light-bg;
+  }
+}
+
+.App {
+  &.dark-theme {
+    .loading-wrap {
+      color: $color-dark-text;
+    }
+  }
+
+  &.light-theme {
+    .loading-wrap {
+      color: $color-light-text;
+    }
+  }
+
+  .loading-wrap {
+    padding: $app-side-padding;
+
+    @include for-size(mobile) {
+      padding: $m-app-side-padding;
+    }
+  }
+}
+
+.App .header {
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(24px) $app-side-padding;
+
+    @include for-size(mobile) {
+      padding: rem(24px) $m-app-side-padding;
+    }
+  }
+
+  h1 {
+    display: inline-block;
+    margin: 0;
+    font-size: rem(24px);
+
+    @include for-size(b4) {
+      font-size: rem(20px);
+    }
+
+    @include for-size(mobile) {
+      font-size: rem(18px);
+    }
+  }
+
+  &.dark-theme {
+    background-color: $color-dark-elem;
+    @include box-shadow(dark);
+
+    h1 {
+      color: $color-dark-text;
+    }
+  }
+
+  &.light-theme {
+    background-color: $color-light-elem;
+    @include box-shadow(light);
+    h1 {
+      color: $color-light-text;
+    }
+  }
+}

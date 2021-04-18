@@ -1,0 +1,64 @@
+@import "../utility/utility.scss";
+
+$input-pad-left: 50px;
+$svg-pad-left: ($input-pad-left - 10px)/ 2;
+
+.searchbox {
+    display: inline-block;
+
+    form {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    svg {
+        display: inline-block;
+        position: absolute;
+        padding-left: rem($svg-pad-left);
+        pointer-events: none;
+    }
+
+    input {
+        display: inline-block;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: $font-size-home;
+        padding: rem(16px) rem(30px);
+        padding-left: rem($input-pad-left);
+        border-radius: rem(8px);
+    }
+}
+
+.searchbox.light-theme {
+    svg {
+        fill: $color-light-input;
+    }
+
+    input {
+        color: $color-light-text;
+        background-color: $color-light-elem;
+        @include box-shadow(light);
+        
+        &::placeholder {
+            color: $color-light-input;
+        }
+    }
+}
+
+.searchbox.dark-theme {
+    svg {
+        fill: $color-dark-input;
+    }
+
+    input {
+        color: $color-dark-text;
+        background-color: $color-dark-elem;
+        @include box-shadow(dark);
+
+        &::placeholder {
+            color: $color-dark-input;
+        }
+    }
+}

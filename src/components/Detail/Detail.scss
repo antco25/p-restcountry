@@ -1,0 +1,212 @@
+@import "../utility/utility.scss";
+
+.detail {
+    font-size: $font-size-detail;
+
+    .detail-wrap {
+        padding: $app-side-padding;
+
+        @include for-size(mobile) {
+            padding: $m-app-side-padding;
+        }
+    }
+
+    .detail-back {
+        padding: rem(40px) 0;
+
+        @include for-size(b2) {
+            padding-top: rem(20px);
+        }
+    }
+
+    .detail-back-btn {
+        display: inline-flex;
+        align-items: center;
+        color: inherit;
+        text-decoration: none;
+        outline: none;
+        padding: rem(16px) rem(30px);
+        border-radius: rem(8px);
+        font-size: inherit;
+        cursor: pointer;
+
+        p {
+            display: inline-block;
+            margin: 0;
+        }
+
+        svg {
+            padding-left: rem(12px);
+        }
+    }
+
+    .detail-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include for-size(b2) {
+            flex-direction: column;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        @include for-size(b3) {
+            max-width: unset;
+            margin: unset;
+        }
+
+        .detail-info-img {
+            flex-basis: 40%;
+
+            img {
+                width: 100%;
+                display: block;
+            }
+
+            @include for-size(b2) {
+                margin-bottom: rem(20px);
+                max-width: 80%;
+            }
+
+            
+            @include for-size(b3) {
+                max-width: unset;
+            }
+        }
+
+        .detail-info-data {
+            padding-left: rem(40px);
+            flex-basis: 50%;
+
+            @include for-size(b2) {
+                padding: 0;
+                width: 100%;
+            }
+
+            .title {
+                font-size: rem(28px);
+            }
+        }
+
+        .data-col-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            > :first-child {
+                padding-right: rem(30px);
+            }
+
+            .data-col {
+                padding-bottom: rem(40px);
+            }
+
+            p {
+                margin: 0;
+                padding-bottom: rem(12px);
+            }
+
+            @include for-size(b4) {
+                flex-direction: column;
+
+                > :first-child {
+                    padding-right: 0;
+                }
+
+            }
+        }
+
+        .border-co {
+            p {
+                display: inline-block;
+                margin: 0;
+                padding-right: rem(16px);
+                font-size: rem(18px);
+                font-weight: 600;
+            }
+
+            ul {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+
+            li {
+                display: inline-block;
+                color: inherit;
+                border: none;
+                outline: none;
+                border-radius: rem(8px);
+                margin-right: rem(12px);
+                font-size: $font-size-home;
+                margin-top: rem(12px);
+
+                a {
+                    display: inline-block;
+                    text-decoration: none;
+                    padding: rem(4px) rem(20px);
+                    color: inherit;
+                }
+            }
+
+            @include for-size(b4) {
+                p {
+                    padding-bottom: rem(16px);
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.detail {
+    &.dark-theme {
+        color: $color-dark-text;
+
+        .detail-back-btn {
+            background-color: $color-dark-elem;
+            @include box-shadow(dark);
+
+            svg {
+                fill: $color-dark-text;
+            }
+        }
+
+        .detail-info-img {
+            @include box-shadow(dark);
+        }
+
+        .border-co {
+            li {
+                background-color: $color-dark-elem;
+                @include box-shadow(dark);
+            }
+        }
+    }
+
+    &.light-theme {
+        color: $color-light-text;
+
+        .detail-back-btn {
+            background-color: $color-light-elem;
+            @include box-shadow(dark);
+
+            svg {
+                fill: $color-light-text;
+            }
+        }
+
+        .detail-info-img {
+            @include box-shadow(dark);
+        }
+
+        .border-co {
+            li {
+                background-color: $color-light-elem;
+                @include box-shadow(light);
+            }
+        }
+    }
+}
