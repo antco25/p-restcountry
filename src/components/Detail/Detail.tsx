@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import './Detail.scss';
 import { Theme, listToText, numberWithComma } from '../utility/utility';
 import { ReactComponent as ArrowIcon } from './barrow.svg';
@@ -32,7 +32,7 @@ const Detail: FunctionComponent<DetailProps> = (props) => {
                 </section>
                 <section className="detail-info">
                     <section className="detail-info-img">
-                        <img src={country.flag} />
+                        <img src={country.flag} alt="country flag" />
                     </section>
                     <section className="detail-info-data">
                         <h1 className="title">{country.name}</h1>
@@ -53,8 +53,8 @@ const Detail: FunctionComponent<DetailProps> = (props) => {
                         <section className="border-co">
                             <p>Border Countries: </p>
                             <ul>
-                                {country.borderNames.map(b => {
-                                    return <li><Link to={`/country/${b.alpha3Code}`}>{b.name}</Link></li>
+                                {country.borderNames.map((b, index) => {
+                                    return <li key={index}><Link to={`/country/${b.alpha3Code}`}>{b.name}</Link></li>
                                 })}
                             </ul>
                         </section>

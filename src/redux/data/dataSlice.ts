@@ -2,47 +2,44 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../store'
 import axios from 'axios'
 
-let repo : CountryType[]; 
+let repo: CountryType[];
 
 export const fetchData = createAsyncThunk(
   'data/fetchDataStatus',
   async () => {
-    try {
-      const response = await axios.get('https://restcountries.eu/rest/v2/all');
-      repo = response.data.map((country: {
-        name: string,
-        nativeName: string,
-        population: number,
-        region: string,
-        subregion: string,
-        capital: string,
-        topLevelDomain: string[],
-        currencies: any[],
-        languages: any[],
-        flag: string,
-        alpha3Code: string,
-        borders: string[]
-      }) => {
-        return {
-          name: country.name,
-          nativeName: country.nativeName,
-          population: country.population,
-          region: country.region,
-          subregion: country.subregion,
-          capital: country.capital,
-          topLevelDomain: country.topLevelDomain,
-          currencies: country.currencies.map((c: any) => c.name),
-          languages: country.languages.map((l: any) => l.name),
-          flag: country.flag,
-          alpha3Code: country.alpha3Code.toLowerCase(),
-          borders: country.borders.map((b: string) => b.toLowerCase()),
-          borderNames: <BorderNameType[]>[]
-        }
-      })
-      return repo;
-    } catch (error) {
-      return error
-    }
+    const response = await axios.get('https://restcountries.com/v2/all');
+
+    repo = response.data.map((country: {
+      name: string,
+      nativeName: string,
+      population: number,
+      region: string,
+      subregion: string,
+      capital: string,
+      topLevelDomain: string[],
+      currencies: any[],
+      languages: any[],
+      flag: string,
+      alpha3Code: string,
+      borders: string[]
+    }) => {
+      return {
+        name: country.name,
+        nativeName: country.nativeName,
+        population: country.population,
+        region: country.region,
+        subregion: country.subregion,
+        capital: country.capital ? country.capital : "None",
+        topLevelDomain: country.topLevelDomain,
+        currencies: country.currencies ? country.currencies.map((c: any) => c.name) : ["None"],
+        languages: country.languages.map((l: any) => l.name),
+        flag: country.flag,
+        alpha3Code: country.alpha3Code.toLowerCase(),
+        borders: country.borders ? country.borders.map((b: string) => b.toLowerCase()) : [],
+        borderNames: [] as BorderNameType[]
+      }
+    })
+    return repo;
   }
 )
 
@@ -135,7 +132,7 @@ function getFilteredCountries(filters: FilterType) {
 
   //Case: With filters
   let countries = repo.filter(country => {
-    if (filters.search != '' && !country.name.toLowerCase().includes(filters.search.toLowerCase())) {
+    if (filters.search !== '' && !country.name.toLowerCase().includes(filters.search.toLowerCase())) {
       return false
     }
 
@@ -181,10 +178,10 @@ export const dataSlice = createSlice({
     builder.addCase(fetchData.fulfilled, (state, action) => {
       return { ...state, countries: action.payload, status: 'ready' }
     })
-    builder.addCase(fetchData.pending, (state, action) => {
+    builder.addCase(fetchData.pending, (state) => {
       return { ...state, status: 'loading' }
     })
-    builder.addCase(fetchData.rejected, (state, action) => {
+    builder.addCase(fetchData.rejected, (state) => {
       return { ...state, status: 'error' }
     })
   }

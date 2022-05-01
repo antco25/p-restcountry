@@ -59,8 +59,8 @@ const Dropdown: FunctionComponent<DropdownProps> = (props) => {
   }
 
   function getOptions(options: RegionType[]): ReactNode {
-    return options.map((option) =>
-      <li className="option" onClick={() => onOptionClick(option)}>{option}</li>
+    return options.map((option, index) =>
+      <li key={index} className="option" onClick={() => onOptionClick(option)}>{option}</li>
     )
   }
 

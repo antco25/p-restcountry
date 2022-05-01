@@ -19,7 +19,7 @@ export type CardProps = {
 const Card: FunctionComponent<CardProps> = (props) => {
   return (
     <div className={`card ${props.theme}`} onClick={props.onClick}>
-      <img className="card-img" src={props.data.flag} />
+      <img className="card-img" src={props.data.flag} alt="country flag" />
       <section className="card-data">
         <h1 className="title">{props.data.name}</h1>
         <p className="data-row"><span className="data-title">Population: </span>{numberWithComma(props.data.population)}</p>

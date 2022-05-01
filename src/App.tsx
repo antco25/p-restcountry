@@ -19,10 +19,10 @@ function App() {
     if (data.status === 'loading') {
       dispatch(fetchData())
     }
-  }, [data.status])
+  }, [data.status, dispatch])
 
   const toggleTheme = () => {
-    if (appTheme == "light-theme") {
+    if (appTheme === "light-theme") {
       setAppTheme("dark-theme")
     } else {
       setAppTheme('light-theme')

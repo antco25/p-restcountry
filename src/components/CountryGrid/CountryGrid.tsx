@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import './CountryGrid.scss';
 import Card from '../Card/Card';
 import { Theme, getGridParams, isInvalidParams, capitalizeFirstLetter } from '../utility/utility';
@@ -33,15 +33,18 @@ const CountryGrid: FunctionComponent<CountryGridProps> = (props) => {
     const data = useSelector(selectData);
     const countries = data.countries
     const dispatch = useDispatch()
-   
-    //Check if filters have changed
-    const pathname = history.location.search === '' ? history.location.pathname : history.location.search
-    const filters = getFilters(pathname)
 
-    if (filters.region !== data.filters.region
-        || filters.search !== data.filters.search) {
-        dispatch(setFilters(filters))
-    }
+    //Check if filters have changed
+    useEffect(() => {
+        const pathname = history.location.search === '' ? history.location.pathname : history.location.search
+        const filters = getFilters(pathname)
+
+        if (filters.region !== data.filters.region
+            || filters.search !== data.filters.search) {
+            dispatch(setFilters(filters))
+        }
+    })
+
 
     //Check for invalid URLs
     if (props.match.path === '/:params') {
@@ -57,13 +60,13 @@ const CountryGrid: FunctionComponent<CountryGridProps> = (props) => {
         <div className="countryGrid app-wrap">
             <section className="filter">
                 <div className="filter-wrap">
-                    <Searchbox theme={props.theme} history={history} value={data.filters.search}/>
-                    <Dropdown theme={props.theme} history={history} value={data.filters.region}/>
+                    <Searchbox theme={props.theme} history={history} value={data.filters.search} />
+                    <Dropdown theme={props.theme} history={history} value={data.filters.region} />
                 </div>
             </section>
             <div className="countryGrid-wrap ">
-                {countries.map(country => {
-                    return <Link to={`/country/${country.alpha3Code}`}><Card theme={props.theme} data={country} /></Link>
+                {countries.map((country, index) => {
+                    return <Link to={`/country/${country.alpha3Code}`} key={index} ><Card theme={props.theme} data={country} /></Link>
                 })}
             </div>
         </div>
