@@ -1,4 +1,4 @@
-@import "../utility/utility.scss";
+@use "../utility/utility.scss";
 
 .dropdown {
     display: inline-block;
@@ -10,77 +10,77 @@
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
-    font-size: $font-size-home;
+    font-size: utility.$font-size-home;
 }
 
 .dropdown {
     &.light-theme {
-        color: $color-light-text;
-        @include box-shadow(light);
+        color: utility.$color-light-text;
+        @include utility.box-shadow(light);
 
         .dropdown-selected {
-            background-color: $color-light-elem;
+            background-color: utility.$color-light-elem;
 
             svg {
-                fill: $color-light-text;
+                fill: utility.$color-light-text;
             }
         }
 
         .dropdown-options {
-            background-color: $color-light-elem;
-            box-shadow: 0 rem(4px) rem(8px) 0 rgba(255, 255, 255, 0.2);
+            background-color: utility.$color-light-elem;
+            box-shadow: 0 utility.rem(4px) utility.rem(8px) 0 rgba(255, 255, 255, 0.2);
 
             .option:hover {
-                background-color: $color-light-input;
+                background-color: utility.$color-light-input;
             }
         }
 
         &:hover,
         &:focus {
             .dropdown-options {
-                box-shadow: 0 rem(4px) rem(8px) 0 rgba(255, 255, 255, 0.3);
+                box-shadow: 0 utility.rem(4px) utility.rem(8px) 0 rgba(255, 255, 255, 0.3);
             }
         }
     }
 
     &.dark-theme {
-        color: $color-dark-text;
-        @include box-shadow(dark);
+        color: utility.$color-dark-text;
+        @include utility.box-shadow(dark);
 
         .dropdown-selected {
-            background-color: $color-dark-elem;
+            background-color: utility.$color-dark-elem;
 
             svg {
-                fill: $color-dark-input;
+                fill: utility.$color-dark-input;
             }
         }
 
         .dropdown-options {
-            background-color: $color-dark-elem;
-            box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+            background-color: utility.$color-dark-elem;
+            box-shadow: 0 utility.rem(4px) utility.rem(8px) 0 rgba(0, 0, 0, 0.2);
 
             .option:hover {
-                background-color: $color-light-text;
+                background-color: utility.$color-light-text;
             }
         }
 
         &:hover,
         &:focus {
             .dropdown-options {
-                box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.5);
+                box-shadow: 0 utility.rem(4px) utility.rem(8px) 0 rgba(0, 0, 0, 0.5);
             }
         }
     }
 }
 
 .dropdown .dropdown-selected {
-    padding: rem(16px);
-    border-radius: rem(8px);
+    padding: utility.rem(16px);
+    border-radius: utility.rem(8px);
 
     .selected {
         display: inline-block;
-        padding-right: rem(10px);
-        min-width: rem(125px);
+        padding-right: utility.rem(10px);
+        min-width: utility.rem(125px);
     }
 }
 .dropdown .dropdown-options {
@@ -89,8 +89,8 @@
     list-style-type: none;
     top: 110%;
     margin: 0;
-    padding: rem(16px) 0;
-    border-radius: rem(8px);
+    padding: utility.rem(16px) 0;
+    border-radius: utility.rem(8px);
     box-sizing: border-box;
     width: 100%;
 
@@ -99,6 +99,6 @@
     }
 
     .option {
-        padding: rem(10px) rem(16px);
+        padding: utility.rem(10px) utility.rem(16px);
     }
 }

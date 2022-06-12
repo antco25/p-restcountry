@@ -1,60 +1,56 @@
-@import "../utility/utility.scss";
+@use "../utility/utility.scss";
 
 .countryGrid {
-    padding: 0 $app-side-padding;
+  padding: 0 utility.$app-side-padding;
 
-    .countryGrid-wrap {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -1rem;
+  .countryGrid-wrap {
+    padding: 1.5rem 0 5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 2rem;
+    row-gap: 3rem;
 
-        a {
-            margin: 1.5rem 1rem;
-            flex-basis: calc(25% - 2rem);
-        }
-
-        @include for-size(b2) {
-            a {
-                flex-basis: calc(33.33% - 2rem);
-            }
-        }
-
-        @include for-size(b3) {
-            a {
-                flex-basis: calc(50% - 2rem);
-            }
-        }
-
-        @include for-size(b4) {
-            flex-direction: column;
-        }
+    @media (max-width: utility.$breakpoint-1) {
+      column-gap: 1.5rem;
     }
+    @media (max-width: utility.$breakpoint-2) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: utility.$breakpoint-3) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: utility.$breakpoint-4) {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .countryGrid .filter {
-    .filter-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-content: center;
-      padding: rem(40px) 0;
-  
-      @include for-size(b4) {
-        flex-direction: column;
-  
-        .dropdown {
-          align-self: flex-start;
-        }
-      }
-    }
-  
-    .searchbox {
-      width: rem(500px);
-      max-width: 60%;
-  
-      @include for-size(b4) {
-        width: 100%;
-        max-width: 100%;
-        padding-bottom: rem(40px);
+  .filter-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: utility.rem(40px) 0;
+
+    @media (max-width: utility.$breakpoint-4) {
+      flex-direction: column;
+
+      .dropdown {
+        align-self: flex-start;
       }
     }
   }
+
+  .searchbox {
+    width: utility.rem(500px);
+    max-width: 60%;
+
+    @media (max-width: utility.$breakpoint-4) {
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: utility.rem(40px);
+    }
+  }
+}

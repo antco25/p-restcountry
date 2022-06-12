@@ -1,34 +1,47 @@
-@import "../utility/utility.scss";
-$border-radius: rem(8px);
+@use "../utility/utility.scss";
+$border-radius: utility.rem(8px);
 
 .card {
     display: inline-block;
     border-radius: $border-radius;
+    width: 100%;
     height: 100%;
 
     .card-img {
         display: block;
         border-radius: $border-radius $border-radius 0 0;
         width: 100%;
-        height: 50%;
+        height: 11rem;
         object-fit: cover;
+
+        @media (max-width: utility.$breakpoint-4) {
+            height: 16rem;
+        }
+
+        @media (max-width: 480px) {
+            height: 14rem;
+        }
+
+        @media (max-width: utility.$breakpoint-mobile) {
+            height: 11rem;
+        }
     }
 
     &.dark-theme {
-        background-color: $color-dark-elem;
-        @include box-shadow(dark);
+        background-color: utility.$color-dark-elem;
+        @include utility.box-shadow(dark);
 
         .card-data {
-            color: $color-dark-text;
+            color: utility.$color-dark-text;
         }
     }
 
     &.light-theme {
-        background-color: $color-light-elem;
-        @include box-shadow(light);
+        background-color: utility.$color-light-elem;
+        @include utility.box-shadow(light);
 
         .card-data {
-            color: $color-light-text;
+            color: utility.$color-light-text;
         }
     }
 }
@@ -39,14 +52,14 @@ $border-radius: rem(8px);
 
     .title {
         margin: 0;
-        padding: 0 0 rem(8px) 0;
-        font-size: rem(18px);
+        padding: 0 0 utility.rem(8px) 0;
+        font-size: utility.rem(18px);
     }
 
     .data-row {
         margin: 0;
         padding: 0.25rem 0;
-        font-size: $font-size-home;
+        font-size: utility.$font-size-home;
 
         .data-title {
             font-weight: 600;

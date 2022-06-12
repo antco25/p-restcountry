@@ -26,34 +26,6 @@ $breakpoint-3: 768px;
 $breakpoint-4: 576px;
 $breakpoint-mobile: 375px;
 
-@mixin for-size($size) {
-    @if $size == mobile {
-        @media (max-width: $breakpoint-mobile) {
-            @content;
-        }
-    } @else if $size == b4 {
-        @media (max-width: $breakpoint-4) {
-            @content;
-        }
-    } @else if $size == b3 {
-        @media (max-width: $breakpoint-3) {
-            @content;
-        }
-    } @else if $size == b2 {
-        @media (max-width: $breakpoint-2) {
-            @content;
-        }
-    } @else if $size == b1 {
-        @media (max-width: $breakpoint-1) {
-            @content;
-        }
-    } @else if $size == b0 {
-        @media (max-width: $breakpoint-0) {
-            @content;
-        }
-    }
-}
-
 //Reusable
 $app-side-padding: rem(30px);
 $m-app-side-padding: rem(24px);
@@ -66,6 +38,7 @@ $m-app-side-padding: rem(24px);
 @mixin box-shadow($theme) {
     @if $theme == "light" {
         box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
 
         &:hover,
         &:focus {
@@ -73,18 +46,11 @@ $m-app-side-padding: rem(24px);
         }
     } @else {
         box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s;
 
         &:hover,
         &:focus {
             box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.5);
         }
-    }
-}
-
-@mixin box-shadow-2($theme) {
-    @if $theme == "light" {
-        box-shadow: 0 rem(4px) rem(8px) 0 rgba(255, 255, 255, 0.2);
-    } @else {
-        box-shadow: 0 rem(4px) rem(8px) 0 rgba(0, 0, 0, 0.2);
     }
 }

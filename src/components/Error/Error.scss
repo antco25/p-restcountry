@@ -1,21 +1,21 @@
-@import "../utility/utility.scss";
+@use "../utility/utility.scss";
 
 .error {
-    font-size: $font-size-detail;
+    font-size: utility.$font-size-detail;
 
     .error-wrap {
-        padding: $app-side-padding;
+        padding: utility.$app-side-padding;
 
-        @include for-size(mobile) {
-            padding: $m-app-side-padding;
+        @media (max-width: utility.$breakpoint-mobile) {
+            padding: utility.$m-app-side-padding;
         }
     }
 
     .error-back {
-        padding: rem(40px) 0;
+        padding: utility.rem(40px) 0;
 
-        @include for-size(b2) {
-            padding-top: rem(20px);
+        @media (max-width: utility.$breakpoint-2) {
+            padding-top: utility.rem(20px);
         }
     }
 
@@ -25,8 +25,8 @@
         color: inherit;
         text-decoration: none;
         outline: none;
-        padding: rem(16px) rem(30px);
-        border-radius: rem(8px);
+        padding: utility.rem(16px) utility.rem(30px);
+        border-radius: utility.rem(8px);
         font-size: inherit;
         cursor: pointer;
 
@@ -36,7 +36,7 @@
         }
 
         svg {
-            padding-left: rem(12px);
+            padding-left: utility.rem(12px);
         }
     }
 
@@ -45,13 +45,13 @@
         justify-content: space-between;
         align-items: center;
 
-        @include for-size(b2) {
+        @media (max-width: utility.$breakpoint-2) {
             flex-direction: column;
             max-width: 90%;
             margin: 0 auto;
         }
 
-        @include for-size(b3) {
+        @media (max-width: utility.$breakpoint-3) {
             max-width: unset;
             margin: unset;
         }
@@ -60,32 +60,32 @@
 
 .error {
     &.dark-theme {
-        color: $color-dark-text;
+        color: utility.$color-dark-text;
 
         .error-back-btn {
-            background-color: $color-dark-elem;
-            @include box-shadow(dark);
+            background-color: utility.$color-dark-elem;
+            @include utility.box-shadow(dark);
 
             svg {
-                fill: $color-dark-text;
+                fill: utility.$color-dark-text;
             }
         }
     }
 
     &.light-theme {
-        color: $color-light-text;
+        color: utility.$color-light-text;
 
         .error-back-btn {
-            background-color: $color-light-elem;
-            @include box-shadow(dark);
+            background-color: utility.$color-light-elem;
+            @include utility.box-shadow(dark);
 
             svg {
-                fill: $color-light-text;
+                fill: utility.$color-light-text;
             }
         }
 
         .error-info-img {
-            @include box-shadow(dark);
+            @include utility.box-shadow(dark);
         }
     }
 }

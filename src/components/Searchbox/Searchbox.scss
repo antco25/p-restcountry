@@ -1,4 +1,4 @@
-@import "../utility/utility.scss";
+@use "../utility/utility.scss";
 
 $input-pad-left: 50px;
 $svg-pad-left: ($input-pad-left - 10px)/ 2;
@@ -15,7 +15,7 @@ $svg-pad-left: ($input-pad-left - 10px)/ 2;
     svg {
         display: inline-block;
         position: absolute;
-        padding-left: rem($svg-pad-left);
+        padding-left: utility.rem($svg-pad-left);
         pointer-events: none;
     }
 
@@ -24,41 +24,41 @@ $svg-pad-left: ($input-pad-left - 10px)/ 2;
         width: 100%;
         border: none;
         outline: none;
-        font-size: $font-size-home;
-        padding: rem(16px) rem(30px);
-        padding-left: rem($input-pad-left);
-        border-radius: rem(8px);
+        font-size: utility.$font-size-home;
+        padding: utility.rem(16px) utility.rem(30px);
+        padding-left: utility.rem($input-pad-left);
+        border-radius: utility.rem(8px);
     }
 }
 
 .searchbox.light-theme {
     svg {
-        fill: $color-light-input;
+        fill: utility.$color-light-input;
     }
 
     input {
-        color: $color-light-text;
-        background-color: $color-light-elem;
-        @include box-shadow(light);
+        color: utility.$color-light-text;
+        background-color: utility.$color-light-elem;
+        @include utility.box-shadow(light);
         
         &::placeholder {
-            color: $color-light-input;
+            color: utility.$color-light-input;
         }
     }
 }
 
 .searchbox.dark-theme {
     svg {
-        fill: $color-dark-input;
+        fill: utility.$color-dark-input;
     }
 
     input {
-        color: $color-dark-text;
-        background-color: $color-dark-elem;
-        @include box-shadow(dark);
+        color: utility.$color-dark-text;
+        background-color: utility.$color-dark-elem;
+        @include utility.box-shadow(dark);
 
         &::placeholder {
-            color: $color-dark-input;
+            color: utility.$color-dark-input;
         }
     }
 }

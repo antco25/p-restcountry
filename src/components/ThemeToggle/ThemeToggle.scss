@@ -1,4 +1,4 @@
-@import "../utility/utility.scss";
+@use "../utility/utility.scss";
 
 .themeToggle {
     cursor: pointer;
@@ -11,25 +11,25 @@
 
     .toggleWrapper {
         display: flex;
-        padding: rem(12px);
+        padding: utility.rem(12px);
         align-items: center;
     }
 
     p {
         margin: 0;
         display: inline;
-        font-size: $font-size-detail;
-        padding-left: rem(8px);
+        font-size: utility.$font-size-detail;
+        padding-left: utility.rem(8px);
         font-weight: 600;
     }
 
-    @include for-size(b4) {
+    @media (max-width: utility.$breakpoint-4) {
         .toggleWrapper {
-            padding: rem(12px) rem(4px);
+            padding: utility.rem(12px) utility.rem(4px);
         }
 
         p {
-            padding-left: rem(4px);
+            padding-left: utility.rem(4px);
         }
     }
 }
