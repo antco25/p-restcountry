@@ -1,7 +1,7 @@
 @use "../utility/utility.scss";
 
 $input-pad-left: 50px;
-$svg-pad-left: ($input-pad-left - 10px)/ 2;
+$svg-pad-left: calc(($input-pad-left - 10px)/ 2);
 
 .searchbox {
     display: inline-block;

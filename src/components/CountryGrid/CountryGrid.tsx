@@ -34,6 +34,10 @@ const CountryGrid: FunctionComponent<CountryGridProps> = (props) => {
     const countries = data.countries
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        document.title = 'Where in the world?'
+    }, [])
+
     //Check if filters have changed
     useEffect(() => {
         const pathname = history.location.search === '' ? history.location.pathname : history.location.search

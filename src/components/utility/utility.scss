@@ -10,7 +10,7 @@ $color-light-bg: hsl(0, 0%, 98%);
 $color-light-elem: white;
 
 @function rem($size) {
-    $remSize: $size / 16px;
+    $remSize: calc($size / 16px);
     @return #{$remSize}rem;
 }
 

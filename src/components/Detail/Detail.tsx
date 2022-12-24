@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import './Detail.scss';
 import { Theme, listToText, numberWithComma } from '../utility/utility';
 import { ReactComponent as ArrowIcon } from './barrow.svg';
@@ -13,6 +13,10 @@ const Detail: FunctionComponent<DetailProps> = (props) => {
 
     const { countryId } = useParams<{ countryId: string }>();
     const country = getCountryData(countryId)
+
+    useEffect(() => {
+        document.title = country ? country.name : 'Where in the world?'
+    }, [country])
 
     const onBackClick = () => {
         props.history.goBack();
