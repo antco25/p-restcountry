@@ -1,8 +1,8 @@
 {
-  "name": "fem-challenge-5",
+  "name": "p-restcountry",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://antco25.github.io/frontendmentor-5",
+  "homepage": "https://antcodev.ca/p-restcountry",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.4",
