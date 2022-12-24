@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useState, useRef, useEffect } from 'react';
 import './Dropdown.scss';
 import { ReactComponent as Arrow } from './arrow.svg'
-import { Theme, getGridParams} from '../utility/utility';
+import { Theme, getGridParams } from '../utility/utility';
 import { regions, RegionType } from '../../redux/data/dataSlice';
 import { History } from 'history';
 import queryString from 'query-string'
@@ -16,24 +16,32 @@ const Dropdown: FunctionComponent<DropdownProps> = (props) => {
 
   const [selected, setSelected] = useState(props.value === "All" ? "Filter by Region" : props.value)
   const [showOptions, setShowOptions] = useState(false)
-  
+
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
 
-    function handleClickOutside(event : MouseEvent) {
+    function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Element)) {
         setShowOptions(false);
       }
     }
 
     document.addEventListener("mousedown", handleClickOutside)
-    
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [ref])
 
-  function onOptionClick(option : RegionType) {
+  useEffect(() => {
+    if (props.value === "All") {
+      setSelected("Filter by Region");
+    } else {
+      setSelected(props.value)
+    }
+  }, [props.value])
+
+  function onOptionClick(option: RegionType) {
     const location = props.history.location
     const gridParams = getGridParams(location.search === "" ? location.pathname : location.search);
 
@@ -46,9 +54,9 @@ const Dropdown: FunctionComponent<DropdownProps> = (props) => {
     }
 
     if (Object.keys(gridParams).length === 0) {
-      props.history.replace({ pathname: '/'})
+      props.history.replace({ pathname: '/' })
     } else {
-      props.history.replace({ pathname: '?' + queryString.stringify(gridParams)})
+      props.history.replace({ pathname: '?' + queryString.stringify(gridParams) })
     }
 
     setShowOptions(false);
